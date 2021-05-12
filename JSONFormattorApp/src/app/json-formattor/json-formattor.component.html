@@ -1,0 +1,18 @@
+<div class="row" >
+    <div class="col-md-6" id="div1" >
+        <div class="form-group">
+            <h3>Input</h3>
+            <textarea #ipData class="form-control" (keyup)="isClicked=false;" id="exampleFormControlTextarea1"  [(ngModel)]="input"></textarea>
+          </div>
+          <button [disabled]="isClicked" id="btnProcess" type="button" class="btn btn-success btn-lg" (click)="getJsonData()" [disabled]="!IsJsonString(input)">Process</button>
+    </div>
+    <div *ngIf = "output.length" class="col-md-6" id="div3">
+        <h3>Output</h3>
+        <textarea class="form-control" [innerHtml]="output|json" id="exampleFormControlTextarea1"  readonly></textarea>
+    </div>
+    <div *ngIf = "!output.length" class="col-md-6" id="div4">
+        <h3 *ngIf ="isClicked && !input.length">Please provide Data !</h3>
+        <h3 *ngIf ="isClicked && input.length">Not a valid JSON !</h3>
+        <h3 *ngIf ="!isClicked">Output will appear here<br/>Please provide input!</h3>
+    </div>
+</div>
